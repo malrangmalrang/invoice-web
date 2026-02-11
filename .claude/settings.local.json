@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash",
+      "WebFetch",
+      "mcp__shadcn",
+      "Skill(git:commit)",
+      "mcp__context7",
+      "mcp__sequential-thinking"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7",
+    "sequential-thinking",
+    "shadcn"
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"\\(.tool_input.command) - \\(.tool_input.description // \"No description\")\"' >> .claude/bash-log.txt"
+          }
+        ]
+      }
+    ]
+  }
+}
