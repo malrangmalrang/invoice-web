@@ -17,7 +17,7 @@ import { useMounted } from '@/hooks/use-mounted'
  * - Sun/Moon 아이콘으로 현재 테마 표시
  */
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme } = useTheme()
   const mounted = useMounted()
 
   if (!mounted) {
