@@ -4,7 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 프로젝트 개요
 
-Next.js 16 + TypeScript + Tailwind CSS v4 기반의 한국어 스타터킷입니다. shadcn/ui 컴포넌트와 다크모드를 포함하여 빠른 웹 개발을 위한 기본 구조가 설정되어 있습니다.
+**견적서 시스템 (Invoice Web)**은 노션 데이터베이스를 활용하여 견적서를 관리하고, 클라이언트가 웹에서 간편하게 확인 및 PDF로 다운로드할 수 있는 시스템입니다.
+
+📋 **상세 프로젝트 요구사항은 @/docs/PRD.md 참조**
+📅 **개발 순서는 @/docs/ROADMAP.md 참조**
 
 ## 개발 명령어
 
@@ -60,12 +63,21 @@ Header는 데스크톱에서 `Navigation` 컴포넌트를, 모바일에서 `Mobi
 
 ### 페이지 구성 패턴
 
-홈페이지(`app/page.tsx`)는 섹션 컴포넌트를 조합하여 구성됩니다:
-- `HeroSection`: 메인 히어로 영역
-- `FeaturesGrid`: FEATURES 상수를 사용하여 기능 그리드 렌더링
-- `CtaSection`: 행동 유도 섹션
+이 프로젝트는 다음 페이지들로 구성됩니다:
 
-새로운 랜딩 섹션을 추가할 때는 `components/sections/`에 컴포넌트를 생성하고 페이지에서 조합하세요.
+1. **홈페이지** (`app/page.tsx`): 서비스 소개 및 이용 안내
+   - FEATURES 상수를 사용하여 주요 기능 표시
+   - 이용 방법 단계별 안내
+
+2. **견적서 뷰어** (`app/invoice/[id]/page.tsx`): 견적서 내용 표시 및 PDF 다운로드
+   - URL 파라미터로 견적서 ID 수신
+   - Notion API로 데이터 조회 (구현 예정)
+   - 회사 정보, 클라이언트 정보, 견적 항목, 금액 요약 표시
+   - PDF 다운로드 버튼
+
+3. **에러 페이지**:
+   - `app/not-found.tsx`: 404 에러 (존재하지 않는 견적서)
+   - `app/error.tsx`: 런타임 에러 (API 오류 등)
 
 ### UI 컴포넌트
 
